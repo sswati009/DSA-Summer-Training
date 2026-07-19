@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <string.h>   // ✅ Fix 1: added for strcpy (needed for struct copy)
-
+#include <string.h>  
 struct Team {
     char name[30];
     int played, won, lost, draw;
@@ -35,7 +34,7 @@ int main() {
         teams[i].points = (teams[i].won * 2) + (teams[i].draw * 1);
     }
 
-    // Sort teams based on points (descending)
+    // Sort teams based on points 
     for (i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (teams[i].points < teams[j].points) {
@@ -46,7 +45,6 @@ int main() {
         }
     }
 
-    // ✅ Fix 2: added closing '|' and '\n' properly, fixed header alignment
     printf("\nCRICKET TOURNAMENT SCORECARD\n");
     printf("----------------------------------------------------------\n");
     printf("| %-20s %-8s %-5s %-5s %-5s %-7s|\n",
