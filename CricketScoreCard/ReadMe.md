@@ -1,16 +1,34 @@
-# 🏏 Cricket Tournament Scorecard in C
+# 🏏 Cricket Tournament Points Table in C
 
-A command-line Cricket Tournament Scorecard program written in C that takes match results from multiple teams, calculates points, sorts them by ranking, and displays a formatted scorecard table.
+A command-line Cricket Tournament Management System in C with **input validation**, **automatic point calculation**, and **ranked scorecard display**.
 
 ---
 
-## 🎯 How It Works
+## 🚀 Quick Start
 
-- Enter how many teams are in the tournament
-- For each team, enter their match stats (played, won, lost, drawn)
-- The program **automatically calculates points**
-- Teams are **sorted by points** (highest first)
-- A clean **formatted scorecard table** is displayed
+```bash
+# Compile
+gcc scorecard.c -o scorecard
+
+# Run
+./scorecard        # Linux / Mac
+scorecard.exe      # Windows
+```
+
+> **Requirement:** GCC compiler
+> - Linux: `sudo apt install gcc`
+> - Mac: `xcode-select --install`
+> - Windows: [MinGW](https://www.mingw-w64.org/)
+
+---
+
+## 🎮 How It Works
+
+Step 1 → Enter number of teams
+Step 2 → Enter maximum matches allowed per team
+Step 3 → Enter match stats for each team
+Step 4 → Program validates, calculates & sorts
+Step 5 → Ranked points table is displayed
 
 ---
 
@@ -18,103 +36,104 @@ A command-line Cricket Tournament Scorecard program written in C that takes matc
 
 | Result | Points |
 |--------|--------|
-| Win    | 2 pts  |
-| Draw   | 1 pt   |
-| Loss   | 0 pts  |
+| 🟢 Win  | 2 pts  |
+| 🟡 Draw | 1 pt   |
+| 🔴 Loss | 0 pts  |
 
 ---
 
-## 📁 Project Structure
-cricket-scorecard/
-│
-|-- scorecard.c     # Main source code
-├── README.md       # Project documentation
-└── Output.png      #Output image
+## 🛡️ Validations
+
+| Check | Error Message |
+|-------|--------------|
+| Max matches ≤ 0 | `Maximum matches must be greater than 0` |
+| Negative values | `Negative values are not allowed` |
+| Played > maxMatches | `Team has played more than allowed matches` |
+| Won + Lost + Draw ≠ Played | `Invalid match data — values don't add up` |
 
 ---
 
-## ⚙️ How to Compile & Run
+## 💡 Sample Run
 
-### On Linux / Mac
-```bash
-gcc scorecard.c -o scorecard
-./scorecard
-```
-
-### On Windows
-```bash
-gcc scorecard.c -o scorecard.exe
-scorecard.exe
-```
-
-> Make sure **GCC** is installed:
-> - Linux: `sudo apt install gcc`
-> - Mac: `xcode-select --install`
-> - Windows: Install [MinGW](https://www.mingw-w64.org/)
-
----
-
-## 💡 Example Usage
-Enter the number of teams: 3
---- Team 1 ---
-Enter the name of team 1: India
-Enter the number of matches played by India: 5
-Enter the number of matches won by India: 4
-Enter the number of matches lost by India: 0
-Enter the number of matches drawn by India: 1
---- Team 2 ---
-Enter the name of team 2: Australia
-Enter the number of matches played by Australia: 5
-Enter the number of matches won by Australia: 3
-Enter the number of matches lost by Australia: 1
-Enter the number of matches drawn by Australia: 1
---- Team 3 ---
-Enter the name of team 3: England
-Enter the number of matches played by England: 5
-Enter the number of matches won by England: 1
-Enter the number of matches lost by England: 3
-Enter the number of matches drawn by England: 1
+**Input:**
+Enter number of teams: 3
+Enter maximum matches allowed: 5
+Enter Team 1 Name: India
+Matches Played: 5
+Matches Won: 4
+Matches Lost: 0
+Matches Draw: 1
+Enter Team 2 Name: Australia
+Matches Played: 5
+Matches Won: 3
+Matches Lost: 1
+Matches Draw: 1
+Enter Team 3 Name: England
+Matches Played: 5
+Matches Won: 1
+Matches Lost: 3
+Matches Draw: 1
 
 **Output:**
-CRICKET TOURNAMENT SCORECARD
-| Team Name           Played   Won   Lost  Draw  Points |
-| India               5        4     0     1     9      |
-| Australia           5        3     1     1     7      |
-| England             5        1     3     1     3      |
+
+====== CRICKET TOURNAMENT POINTS TABLE ======
+Team            Played   Won    Lost   Draw   Points
+India           5        4      0      1      9
+Australia       5        3      1      1      7
+England         5        1      3      1      3
+Tournament completed successfully!
 
 ---
 
 ## ✅ Features
 
-- Input validation — won't crash if you type letters instead of numbers
-- Handles any number of teams dynamically
-- Auto sorts teams by points (highest to lowest)
-- Clean formatted table output
-- Simple and beginner-friendly C code
+- **Dynamic team input** — supports any number of teams
+- **Max match limit** — configurable per tournament
+- **4-level input validation** — catches all bad inputs
+- **Auto point calculation** — wins × 2 + draws × 1
+- **Auto ranking** — sorted by points (highest first)
+- **Clean table output** — aligned formatted display
+
+---
+
+## 📁 Project Structure
+cricket-scorecard/
+├── main.c          # Complete source code
+|-- README.md       # Documentation   
+└── Output.png      #Output image
+
+---
+
+## 🧠 Concepts Used
+
+`Structs` · `Arrays` · `Loops` · `Bubble Sort` · `Input Validation` · `Formatted Output` · `VLAs`
 
 ---
 
 ## 🚧 Known Limitations
 
-- Team names cannot contain spaces (e.g. use `SriLanka` not `Sri Lanka`)
-- No file saving — results are shown on screen only
-- No tie-breaker logic if two teams have equal points
+- Team names cannot contain spaces (`SriLanka` ✅ `Sri Lanka` ❌)
+- No tie-breaker for equal points
+- Results not saved after program exits
 
 ---
 
-## 🔮 Future Improvements
+## 🔮 Planned Improvements
 
-- [ ] Add net run rate (NRR) as a tie-breaker
-- [ ] Save scorecard to a `.txt` file
-- [ ] Allow team names with spaces
-- [ ] Add match-by-match result entry
+- [ ] Net Run Rate (NRR) as tie-breaker
+- [ ] Export results to `.txt` file
+- [ ] Support team names with spaces
 - [ ] Color-coded terminal output
+- [ ] Multiple tournament rounds
 
 ---
 
-## 👩‍💻 About
+## 👩‍💻 Author
 
-Built by **[SWATI SWAROOP]** as a C programming practice project.  
-Concepts used: structs, arrays, loops, sorting, formatted output, input validation.
+**Swati Swaroop** · B.Tech Student
 
----
+*Built as a C programming practice project — structs, sorting, validation & formatted output.*
+
+![C](https://img.shields.io/badge/Language-C-blue)
+![GCC](https://img.shields.io/badge/Compiler-GCC-orange)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Mac%20%7C%20Windows-lightgrey)
